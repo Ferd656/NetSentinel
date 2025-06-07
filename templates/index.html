@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NetSentinel - Network Scan Results</title>
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='netsentinel-icon.svg') }}">
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f4f4; margin: 0; padding: 0; }
+        .container { max-width: 900px; margin: 40px auto; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        h1 { color: #2c3e50; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 12px 8px; border-bottom: 1px solid #ddd; text-align: left; }
+        th { background: #2c3e50; color: #fff; }
+        tr:hover { background: #f1f1f1; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>NetSentinel - Network Scan Results</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>IP Address</th>
+                    <th>Hostname</th>
+                    <th>Operating System</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for device in devices %}
+                <tr>
+                    <td>{{ device.ip }}</td>
+                    <td>{{ device.name }}</td>
+                    <td>{{ device.os }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
